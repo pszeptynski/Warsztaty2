@@ -45,8 +45,7 @@ class Users {
 
     public function saveToDB(mysqli $connection) {
         if ($this->id == -1) {
-        //saving new user to DB
-
+            //saving new user to DB
             $sql = "INSERT INTO users(username, email, hashed_password)
                     VALUES ('$this->username', '$this->email', '$this->hashedPassword')";
 
@@ -57,6 +56,23 @@ class Users {
             }
         }
         return false;
+    }
+
+    static public function loadUserById(mysqli $connection, $id) {
+        $sql = "SELECT * FROM users WHERE id=$id";
+
+        $result = $connection->query($sql);
+        if ($result == true && $result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+
+            $loadedUser = new Users();
+            $loadedUser->id = $row['id'];
+            $loadedUser->username = $row['username'];
+            $loadedUser->hashedPassword = $row['hashed_password'];
+            $loadedUser->email = $row['email'];
+            return $loadedUser;
+        }
+        return null;
     }
 
 }
