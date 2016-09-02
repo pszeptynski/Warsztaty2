@@ -1,15 +1,15 @@
 <?php
 
-require_once ('src/init.php');
-require_once ('src/Users.php');
+require_once('src/init.php');
+require_once('src/Users.php');
 
 
 
 $user1 = new Users();
 
-$user1->setEmail('stefan@poczta.pl');
-$user1->setPassword('SuperTajne');
-$user1->setUsername('Stef666');
+$user1->setEmail('roman@poczta.pl');
+$user1->setPassword('SuperTajneX');
+$user1->setUsername('FrywolnyRomek');
 
 var_dump($user1->getID());
 

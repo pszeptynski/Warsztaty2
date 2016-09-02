@@ -1,0 +1,4 @@
+przekierowanie na inna strone:
+header("location: plik.php");
+
+$_SESSION['logged_user_id'] = $id
